@@ -1,0 +1,126 @@
+---
+import { Star, User } from "lucide-astro";
+
+const reviews = [
+  {
+    name: "shameelmansoor77",
+    orders: "5 orders with you",
+    rating: 5,
+    date: "26 Aug, 2025",
+    text: "very tasty, hygienic and well packed, will regularly buy from u nd recommend others as well, chutney jaldhi shuru maadi. u will b...",
+  },
+  {
+    name: "Nishanth Jain",
+    orders: "1 orders with you",
+    rating: 5,
+    date: "23 Aug, 2025",
+    text: "please include khara chutney (red) for both items",
+  },
+  {
+    name: "Vidya",
+    orders: "2 orders with you",
+    rating: 5,
+    date: "14 Dec, 2025",
+    text: "thanks you 😊",
+  },
+  {
+    name: "mahalaxmi",
+    orders: "1 orders with you",
+    rating: 5,
+    date: "24 Oct, 2025",
+    text: "good healthy",
+  },
+  {
+    name: "Ranjita Alagawadi",
+    orders: "2 orders with you",
+    rating: 4,
+    date: "17 Nov, 2025",
+    text: "It was good",
+  },
+  {
+    name: "Healthify Customer",
+    orders: "3 orders with you",
+    rating: 5,
+    date: "16 Jan, 2026",
+    text: "I loved the food.",
+  },
+];
+
+// Duplicate for seamless loop
+const allReviews = [...reviews, ...reviews];
+---
+
+<section id="testimonials" class="bg-grey py-24 overflow-hidden">
+  <div class="container mx-auto px-6 md:px-20 mb-16 fade-up">
+    <h2 class="text-4xl md:text-7xl font-extrabold text-white text-center tracking-tight">
+      What Our <span class="text-primary">Community</span> Says
+    </h2>
+    <p class="text-xl md:text-2xl font-bold text-white/80 text-center mt-4">
+      Real feedback from our Healthify family
+    </p>
+  </div>
+
+  <div class="relative w-full overflow-hidden py-10">
+    <div class="flex animate-marquee-slow whitespace-nowrap gap-8 hover:pause">
+      {
+        allReviews.map((review, index) => (
+          <div 
+            class="inline-block min-w-[320px] md:min-w-[400px] bg-dark rounded-[2.5rem] p-8 shadow-2xl transition-transform hover:scale-105 whitespace-normal"
+          >
+            <!-- User Header -->
+            <div class="flex items-center gap-4 mb-6">
+              <div class="w-14 h-14 bg-grey rounded-full flex items-center justify-center text-white/50 border border-white/10 shrink-0">
+                <User size={28} />
+              </div>
+              <div class="flex flex-col">
+                <h4 class="text-xl font-bold text-white truncate max-w-[200px]">{review.name}</h4>
+                <p class="text-sm text-white/60">{review.orders}</p>
+              </div>
+            </div>
+
+            <!-- Rating & Date -->
+            <div class="flex justify-between items-center mb-6">
+              <div class="flex gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star 
+                    size={18} 
+                    fill={i < review.rating ? "var(--color-primary)" : "none"} 
+                    class={i < review.rating ? "text-primary" : "text-white/20"}
+                    strokeWidth={2}
+                  />
+                ))}
+              </div>
+              <span class="text-xs text-white/40">{review.date}</span>
+            </div>
+
+            <!-- Review Text -->
+            <p class="text-lg md:text-xl text-white/90 leading-relaxed min-h-[80px]">
+              "{review.text}"
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee-slow {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee-slow {
+    animation: marquee-slow 40s linear infinite;
+    display: flex;
+    width: max-content;
+  }
+
+  .hover\:pause:hover {
+    animation-play-state: paused;
+  }
+</style>

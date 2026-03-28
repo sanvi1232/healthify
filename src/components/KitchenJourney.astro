@@ -1,0 +1,75 @@
+---
+import { Wheat, Sun, CookingPot, Heart } from "lucide-astro";
+
+const steps = [
+  {
+    icon: Wheat,
+    title: "1. Sourced with Integrity",
+    description:
+      "We start at the source, hand-picking the finest quality grains directly from local farmers. Every grain is freshly harvested, ensuring that the natural nutrition is lock in from the very beginning",
+  },
+  {
+    icon: Sun,
+    title: "2. Sun-Kissed & Purified",
+    description:
+      "Tradition meets hygiene. Our grains are thoroughly washed and laid out to dry under the sun. This age-old process preserves the essence of the grain while ensuring it is perfectly prepped for milling.",
+  },
+  {
+    icon: CookingPot,
+    title: "3. Small-Batch Precision",
+    description:
+      "Using our specialized pulverizer, we grind the grains into fine, silky flour in precise quantities. This \"small batch\" approach ensures that the flour you receive hasn't been sitting on a shelf for months - it's as fresh as it gets.",
+  },
+  {
+    icon: Heart,
+    title: "4. Packed with Love & Hygiene",
+    description:
+      "Finally, every gram is measured and sealed in a sanitized environment. We don't believe in shortcuts, so you'll find zero preservatives and no artificial colors - just pure food packed with care for your family's wellbeing",
+  },
+];
+---
+
+<section id="journey" class="py-24 bg-white">
+  <div class="container mx-auto px-6 md:px-20">
+    <div class="text-center mb-20 fade-up">
+      <h2
+        class="text-4xl md:text-7xl font-extrabold text-dark mb-4 tracking-tight"
+      >
+        From Our <span class="text-primary">Kitchen</span> to Yours
+      </h2>
+      <p class="text-xl md:text-2xl font-bold text-dark opacity-90">
+        The Healthify Journey: Pure, Simple, and Honest
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-20">
+      {
+        steps.map((step, index) => (
+          <div
+            class="flex flex-col items-center md:items-start text-center md:text-left fade-up"
+            style={`transition-delay: ${index * 150}ms`}
+          >
+            <div class="mb-8 p-6 bg-light-grey/20 rounded-3xl text-primary transform transition-transform hover:scale-110">
+              <step.icon size={48} strokeWidth={1.5} />
+            </div>
+            <h3 class="text-2xl md:text-3xl font-extrabold text-dark mb-4">
+              {step.title}
+            </h3>
+            <p class="text-lg md:text-xl text-dark opacity-80 leading-relaxed max-w-xl text-justify">
+              {step.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-24 text-center fade-up" style="transition-delay: 600ms">
+      <a
+        href="#order"
+        class="inline-block bg-primary text-white text-xl md:text-2xl font-extrabold px-12 py-5 rounded-3xl hover:bg-opacity-90 transition-all hover:scale-105 shadow-xl hover:shadow-primary/30"
+      >
+        Place an Order Now
+      </a>
+    </div>
+  </div>
+</section>

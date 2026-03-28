@@ -1,0 +1,90 @@
+---
+import { ShieldCheck, Sprout, Heart, Droplet } from "lucide-astro";
+
+const features = [
+  {
+    Icon: ShieldCheck,
+    text: "100% Preservative Free",
+  },
+  {
+    Icon: Sprout,
+    text: "Natural Grains & Millets",
+  },
+  {
+    Icon: Heart,
+    text: "High Protein & Fiber",
+  },
+  {
+    Icon: Droplet,
+    text: "Pure Cold-Pressed Oils",
+  },
+];
+---
+
+<section class="bg-grey py-6 md:py-4 overflow-hidden">
+  <div class="container mx-auto px-8 md:px-12">
+    <!-- Desktop Layout (Hidden on mobile) -->
+    <div
+      class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 items-center justify-items-center"
+    >
+      {
+        features.map(({ Icon, text }) => (
+          <div class="flex items-center gap-3 group transition-all duration-300 hover:scale-105">
+            <div class="p-2 text-primary">
+              <Icon size={32} strokeWidth={2.5} class="drop-shadow-sm" />
+            </div>
+            <p class="text-white font-bold text-lg md:text-xl tracking-tight leading-none">
+              {text}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Mobile Marquee Layout (Hidden on desktop) -->
+    <div class="md:hidden relative w-full overflow-hidden">
+      <div class="flex animate-marquee whitespace-nowrap gap-12 items-center">
+        {
+          /* Duplicate items once to ensure infinite scrolling effect */
+          [...features, ...features].map(({ Icon, text }) => (
+            <div class="flex flex-none items-center gap-3">
+              <div class="p-2 text-primary">
+                <Icon size={28} strokeWidth={2.5} class="drop-shadow-sm" />
+              </div>
+              <p class="text-white font-bold text-lg tracking-tight leading-none">
+                {text}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Ensuring icons and text stay sharp */
+  p {
+    text-wrap: nowrap;
+  }
+
+  /* Marquee Animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+    width: max-content;
+  }
+
+  /* Pause animation on hover if needed, or interaction */
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+</style>

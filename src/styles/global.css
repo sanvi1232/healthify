@@ -1,0 +1,99 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../assets/fonts/Outfit-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-body: "Outfit", sans-serif;
+  --color-primary: #EB5E28;
+  --color-dark: #252422;
+  --color-grey: #403D39;
+  --color-light-grey: #D9D9D9;
+}
+
+@layer components {
+  .btn-primary-glow {
+    @apply bg-primary text-white transition-all duration-200 ease-in-out;
+    @apply hover:shadow-primary/50 hover:shadow-lg;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+@layer utilities {
+  .nav-link {
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 8rem;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+
+
+/* ==== SCROLL ANIMATION BASE ==== */
+.fade-up,
+.fade-down,
+.fade-left,
+.fade-right,
+.scale-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.fade-left {
+  transform: translateX(-30px);
+}
+
+.fade-down {
+  transform: translateY(-30px);
+}
+
+.fade-right {
+  transform: translateX(30px);
+}
+
+.scale-in {
+  transform: scale(0.95);
+}
+
+/* === ACTIVE STATE === */
+.in-view {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}

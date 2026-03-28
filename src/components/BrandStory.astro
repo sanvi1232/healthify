@@ -1,0 +1,99 @@
+---
+import StoryImage from "../assets/why-we-do-it.png";
+---
+
+<section id="about-us" class="py-24 bg-white overflow-hidden">
+    <div class="container mx-auto px-6 md:px-20">
+        <!-- Header -->
+        <div class="text-center mb-16 fade-up">
+            <h2
+                class="text-5xl md:text-7xl font-extrabold text-dark tracking-tight leading-none mb-4"
+            >
+                Why <span class="text-primary">We</span> Do It?
+            </h2>
+            <p
+                class="text-2xl md:text-3xl font-bold text-dark/80 tracking-tight"
+            >
+                The Brand Story
+            </p>
+        </div>
+
+        <!-- Content Grid -->
+        <div
+            class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+        >
+            <!-- Image Column -->
+            <div class="relative group fade-right">
+                <div
+                    class="relative rounded-[2.5rem] overflow-hidden shadow-2xl"
+                >
+                    <img
+                        src={StoryImage.src}
+                        alt="Traditional food preparation on a terrace"
+                        class="w-full h-[460px] object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div
+                        class="absolute inset-0 bg-linear-to-t from-black/20 to-transparent"
+                    >
+                    </div>
+                </div>
+
+                <!-- Accent elements -->
+                <div
+                    class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10"
+                >
+                </div>
+                <div
+                    class="absolute -top-6 -right-6 w-48 h-48 bg-dark/5 rounded-full blur-3xl -z-10"
+                >
+                </div>
+            </div>
+
+            <!-- Text Column -->
+            <div class="flex flex-col gap-8 fade-left">
+                <div class="space-y-4">
+                    <h3
+                        class="text-3xl md:text-5xl font-extrabold text-dark leading-tight"
+                    >
+                        Homemade Taste. <br />
+                        <span class="text-primary italic"
+                            >Scientific Nutrition</span
+                        >
+                    </h3>
+                    <p
+                        class="text-lg md:text-xl text-justify text-dark/70 leading-relaxed font-medium"
+                    >
+                        The ritual of a wholesome, homemade meal is slowly
+                        disappearing from modern life. We founded <span
+                            class="text-dark font-bold">Healthify</span
+                        > in Dharwad to bridge that gap—bringing traditional purity
+                        back to your table through 100% natural, preservative-free
+                        staples.
+                    </p>
+                    <p
+                        class="text-lg md:text-xl text-dark/70 leading-relaxed font-medium"
+                    >
+                        Our mission is simple: to make 'healthy' the easiest
+                        choice you make every day.
+                    </p>
+                </div>
+
+                <div class="flex w-full justify-center md:justify-start">
+                    <a
+                        href="#story-full"
+                        class="bg-dark text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-grey transition-all duration-300 hover:shadow-xl hover:-translate-y-1 active:scale-95"
+                    >
+                        Read Our Full Story
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    #brand-story h2,
+    #brand-story h3 {
+        letter-spacing: -0.02em;
+    }
+</style>

@@ -1,0 +1,170 @@
+---
+import NavLogo from "../assets/nav/logo.jpg";
+---
+
+<header class="fixed top-0 left-0 right-0 bg-white z-50">
+  <div class="flex justify-between items-center py-2 px-8 md:px-12">
+    <!-- LOGO -->
+    <a
+      href={import.meta.env.BASE_URL + "#hero"}
+      class="cursor-pointer flex items-center fade-left"
+    >
+      <img src={NavLogo.src} alt="Logo" class="w-40 md:w-44" />
+    </a>
+
+    <!-- DESKTOP MENU -->
+    <nav class="hidden md:flex">
+      <ul
+        class="flex flex-row gap-8 lg:gap-10 font-semibold text-black text-lg items-center"
+      >
+        <li>
+          <a
+            href={import.meta.env.BASE_URL + "#hero"}
+            class="nav-link fade-down">Home</a
+          >
+        </li>
+        <li>
+          <a
+            href={import.meta.env.BASE_URL + "#pantry"}
+            class="nav-link fade-down">Our Products</a
+          >
+        </li>
+        <li>
+          <a
+            href={import.meta.env.BASE_URL + "#about-us"}
+            class="nav-link fade-down">About Us</a
+          >
+        </li>
+        <li>
+          <a
+            href={import.meta.env.BASE_URL + "#specials"}
+            class="nav-link fade-down">Specials</a
+          >
+        </li>
+        <li>
+          <a
+            href={import.meta.env.BASE_URL + "#journey"}
+            class="nav-link fade-down">Why Healthify?</a
+          >
+        </li>
+        <li>
+          <a
+            href={import.meta.env.BASE_URL + "#testimonials"}
+            class="nav-link fade-down">Testimonials</a
+          >
+        </li>
+
+        <li class="fade-right">
+          <a
+            href={import.meta.env.BASE_URL + "#order-now"}
+            class="btn-primary-glow text-white px-6 py-2 rounded-xl tracking-wider"
+          >
+            Contact Us
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- MOBILE HAMBURGER -->
+    <button
+      id="menu-toggle"
+      class="md:hidden flex flex-col justify-between w-8 h-6 z-60"
+      aria-label="Open Menu"
+    >
+      <span
+        class="bar h-[3px] bg-black rounded transition-all duration-300 w-full"
+      ></span>
+      <span
+        class="bar h-[3px] bg-black rounded transition-all duration-300 w-full"
+      ></span>
+      <span
+        class="bar h-[3px] bg-black rounded transition-all duration-300 w-full"
+      ></span>
+    </button>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div
+    id="mobile-menu"
+    class="md:hidden bg-white flex flex-col items-center gap-6 py-10 text-xl text-black
+           font-semibold fixed left-0 right-0 top-[72px] z-40 h-screen
+           transition-all duration-300 transform -translate-y-full opacity-0 shadow-lg"
+  >
+    <a href={import.meta.env.BASE_URL + "#hero"} class="nav-link">Home</a>
+    <a href={import.meta.env.BASE_URL + "#pantry"} class="nav-link"
+      >Our Products</a
+    >
+    <a href={import.meta.env.BASE_URL + "#about-us"} class="nav-link"
+      >About Us</a
+    >
+    <a href={import.meta.env.BASE_URL + "#specials"} class="nav-link"
+      >Specials</a
+    >
+    <a href={import.meta.env.BASE_URL + "#journey"} class="nav-link"
+      >Why Healthify?</a
+    >
+    <a href={import.meta.env.BASE_URL + "#testimonials"} class="nav-link"
+      >Testimonials</a
+    >
+    <a
+      href={import.meta.env.BASE_URL + "#order-now"}
+      class="btn-primary-glow text-white px-8 py-2 rounded-xl">Contact Us</a
+    >
+  </div>
+</header>
+
+<!-- Push content down so it doesn't hide behind fixed header -->
+<div class="h-[72px] md:h-[88px]"></div>
+
+<style is:global>
+  /* --- Hamburger Animation --- */
+  #menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+
+  #menu-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  #menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+  }
+</style>
+
+<script>
+  const menuBtn = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  let open = false;
+
+  if (menuBtn && menu) {
+    // Toggle open/close when hamburger clicked
+    menuBtn.addEventListener("click", () => {
+      open = !open;
+      menuBtn.classList.toggle("active", open);
+
+      if (open) {
+        menu.classList.remove("-translate-y-full", "opacity-0");
+        menu.classList.add("translate-y-0", "opacity-100");
+        document.body.style.overflow = "hidden"; // Prevent scroll when menu is open
+      } else {
+        menu.classList.add("-translate-y-full", "opacity-0");
+        menu.classList.remove("translate-y-0", "opacity-100");
+        document.body.style.overflow = "";
+      }
+    });
+
+    // Close menu when clicking a link
+    const menuLinks = menu.querySelectorAll("a");
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (open) {
+          open = false;
+          menuBtn.classList.remove("active");
+          menu.classList.add("-translate-y-full", "opacity-0");
+          menu.classList.remove("translate-y-0", "opacity-100");
+          document.body.style.overflow = "";
+        }
+      });
+    });
+  }
+</script>

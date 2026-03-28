@@ -1,0 +1,89 @@
+---
+import HeroImage from "../assets/hero/Healthify-hero~2.png";
+---
+
+<section
+  id="hero"
+  class="relative min-h-[80vh] max-h-[82vh] flex items-center pt-12 md:pt-0 overflow-hidden bg-white"
+>
+  <div
+    class="flex flex-col-reverse md:flex-row w-full items-center justify-between"
+  >
+    <!-- Left Image -->
+    <div
+      class="relative w-full md:w-1/2 flex -mt-24 md:mt-0 justify-start items-center h-full fade-right md:pr-20 z-10"
+    >
+      <div class="relative w-full h-auto flex justify-start">
+        <img
+          src={HeroImage.src}
+          alt="Healthify - 100% Natural, Homemade Traditional Food"
+          class="w-full max-w-[800px] h-auto object-contain drop-shadow-2xl transition-transform duration-500"
+        />
+
+        <!-- Accent circles -->
+        <div
+          class="absolute -top-10 -left-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl -z-1"
+        >
+        </div>
+        <div
+          class="absolute -bottom-10 -right-10 w-60 h-60 bg-primary/10 rounded-full blur-3xl -z-1"
+        >
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Content -->
+    <div
+      class="pl-8 md:pr-24 py-12 flex flex-col gap-6 max-w-4xl z-20 md:text-right text-left md:items-end items-start ml-auto"
+    >
+      <h1
+        class="text-5xl md:text-7xl font-extrabold text-dark tracking-tight leading-tighter fade-up"
+      >
+        Give <span class="text-primary tracking-tight">Time</span> to Health, <br
+          class="hidden md:block"
+        />
+        Without Losing Yours
+      </h1>
+
+      <p
+        class="text-lg md:text-xl max-w-2xl font-semibold leading-relaxed fade-up animation-delay-200"
+      >
+        Premium 100% Natural, Homemade food products delivered from our kitchen
+        to yours. No preservative, no artificial colors--just the pure nutrition
+        of traditional grains and cold-pressed oils.
+      </p>
+
+      <div
+        class="flex flex-wrap gap-4 md:justify-end justify-start fade-up animation-delay-400"
+      >
+        <a
+          href="#specials"
+          class="bg-dark text-white px-8 py-2 rounded-xl font-semibold text-lg hover:scale-105 transition-transform duration-200 shadow-lg"
+        >
+          View Latest Offers
+        </a>
+        <a
+          href="#order-now"
+          class="btn-primary-glow text-white px-8 py-2 rounded-xl font-semibold text-lg hover:scale-105 transition-transform duration-200"
+        >
+          Shop our Natural Range
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Base delay for animations if not already in global.css */
+  .animation-delay-200 {
+    transition-delay: 200ms;
+  }
+  .animation-delay-400 {
+    transition-delay: 400ms;
+  }
+
+  /* Specific tweak for the "Time" word tracking */
+  .tracking-tight {
+    letter-spacing: -0.02em;
+  }
+</style>

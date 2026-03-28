@@ -1,0 +1,84 @@
+---
+import { MessageCircle, MapPin, Instagram, Facebook, Twitter } from "lucide-astro";
+
+const quickLinks = [
+  { name: "Home", href: "#" },
+  { name: "Specials", href: "#specials" },
+  { name: "Our Products", href: "#pantry" },
+  { name: "Our Journey", href: "#journey" },
+  { name: "Our Story", href: "#brand-story" },
+  { name: "Reviews", href: "#testimonials" },
+];
+
+const address = "Rashinkar Building, Near Sarur TVS Showroom, Koppa Tank, Dharwad - 580008.";
+const whatsappNumber = "9100000000"; // Placeholder
+const whatsappLink = `https://wa.me/${whatsappNumber}`;
+---
+
+<footer class="bg-dark text-white py-20 border-t border-white/5">
+  <div class="container mx-auto px-6 md:px-20">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-24 mb-16">
+      <!-- Column 1: Brand & Address -->
+      <div class="flex flex-col gap-6">
+        <h3 class="text-3xl font-extrabold text-primary tracking-tight">Healthify</h3>
+        <p class="text-lg text-white/70 flex items-start gap-4 leading-relaxed">
+          <MapPin size={28} class="text-primary shrink-0 mt-1" />
+          <span>{address}</span>
+        </p>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="flex flex-col gap-6">
+        <h4 class="text-xl font-bold text-white">Quick Links</h4>
+        <nav class="flex flex-col gap-4">
+          {quickLinks.map(link => (
+            <a 
+              href={link.href} 
+              class="text-lg text-white/50 hover:text-primary transition-colors w-fit"
+            >
+              {link.name}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Column 3: Contact & Socials -->
+      <div class="flex flex-col gap-6">
+          <h4 class="text-xl font-bold text-white">Let's Connect</h4>
+          <div class="flex flex-col gap-6">
+              <a 
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-4 text-lg text-white/70 hover:text-primary transition-colors group"
+              >
+                <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <MessageCircle size={24} />
+                </div>
+                <span>Order on WhatsApp</span>
+              </a>
+              
+              <div class="flex gap-4">
+                  {[Instagram, Facebook, Twitter].map(Icon => (
+                      <a 
+                        href="#" 
+                        class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-white/50 hover:text-primary hover:bg-primary/20 transition-all border border-white/5"
+                      >
+                          <Icon size={24} />
+                      </a>
+                  ))}
+              </div>
+          </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/30 text-sm">
+      <p>&copy; {new Date().getFullYear()} Healthify Foods. All rights reserved.</p>
+      <div class="flex gap-8">
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

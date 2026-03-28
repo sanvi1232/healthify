@@ -1,0 +1,116 @@
+---
+import Chips from "../assets/pantry/chips.jpeg";
+import SabudanaPapad from "../assets/pantry/sabudana-papad.jpeg";
+import JawarVada from "../assets/pantry/jawar-vada.png";
+import Masala from "../assets/pantry/masala.png";
+import Shandige from "../assets/pantry/shandige.png";
+import Taalipeeth from "../assets/pantry/talipeeth.png";
+import WheatShavige from "../assets/pantry/wheat-shavige.png";
+import Snacks from "../assets/pantry/snacks.png";
+import ShakkarPaale from "../assets/pantry/shakkar-paale.png";
+import Paapad from "../assets/pantry/paapad.png";
+import Chakli from "../assets/pantry/chakli.png"
+
+const pantryItems = [
+  {
+    title: "Ready-To-Cook",
+    bgColor: "bg-dark",
+    textColor: "text-white",
+    images: [Shandige, WheatShavige, Taalipeeth, JawarVada],
+    span: "md:col-span-2",
+  },
+  {
+    title: "Sweets",
+    bgColor: "bg-grey",
+    textColor: "text-white",
+    images: [Snacks],
+    span: "md:col-span-1",
+  },
+  {
+    title: "Daily Staples",
+    bgColor: "bg-light-grey",
+    textColor: "text-dark",
+    images: [Masala],
+    span: "md:col-span-1",
+  },
+  {
+    title: "Paapads & Snacks",
+    bgColor: "bg-primary",
+    textColor: "text-white",
+    images: [SabudanaPapad, ShakkarPaale, Chakli, Paapad],
+    span: "md:col-span-2",
+  },
+];
+---
+
+<section id="pantry" class="py-24 bg-white">
+  <div class="container mx-auto px-6 md:px-20">
+    <h2 class="text-5xl md:text-7xl font-extrabold text-center mb-20 text-dark fade-up">
+      The <span class="text-primary">Healthify</span> Pantry
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      {
+        pantryItems.map((item, index) => (
+          <div
+            class={`group relative overflow-hidden rounded-[3rem] p-10 md:p-12 min-h-[350px] flex flex-col justify-between transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl shadow-xl fade-up ${item.bgColor} ${item.span}`}
+            style={`transition-delay: ${index * 150}ms`}
+          >
+            <!-- Title -->
+            <h3 class={`text-3xl md:text-4xl font-bold ${item.textColor} z-20 relative pointer-events-none`}>
+              {item.title}
+            </h3>
+
+            <!-- Stacked Images -->
+            <div class="absolute inset-0 flex items-center justify-end md:justify-center pr-4 md:pr-0 pointer-events-none">
+                <div class="relative w-1/2 md:w-full h-full flex items-center justify-center">
+                    {item.images.map((img, idx) => (
+                        <img 
+                            src={typeof img === 'string' ? img : img.src} 
+                            alt={`${item.title} Products - Healthify`} 
+                            class="image-stack absolute h-40 md:h-56 max-w-[80%] object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)] transition-all duration-500 ease-out"
+                            style={`
+                                --r: ${idx * 12 - (item.images.length - 1) * 6}deg;
+                                --tx: ${idx * 35 - (item.images.length - 1) * 17}px;
+                                --ty: ${idx * 8 - (item.images.length - 1) * 4}px;
+                                
+                                --hr: ${idx * 28 - (item.images.length - 1) * 14}deg;
+                                --htx: ${idx * 90 - (item.images.length - 1) * 45}px;
+                                --hty: ${idx * 25 - (item.images.length - 1) * 18}px;
+                                
+                                z-index: ${idx + 5};
+                            `}
+                        />
+                    ))}
+                </div>
+            </div>
+
+            <!-- Learn More Button -->
+            <div class="flex justify-start md:justify-end z-20 relative">
+              <a
+                href={`#${item.title.toLowerCase().replace(/\s+/g, "-")}`}
+                class="bg-white text-dark px-8 py-3 rounded-2xl font-bold text-base md:text-lg hover:bg-light-grey transition-all duration-300 hover:shadow-lg active:scale-95"
+              >
+                Learn more
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  #pantry h2 {
+    letter-spacing: -0.02em;
+  }
+
+  .image-stack {
+    transform: rotate(var(--r)) translateX(var(--tx)) translateY(var(--ty));
+  }
+
+  .group:hover .image-stack {
+    transform: rotate(var(--hr)) translateX(var(--htx)) translateY(var(--hty)) scale(1.05);
+  }
+</style>
